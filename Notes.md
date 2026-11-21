@@ -95,3 +95,13 @@ restClientBuilder.build()
     .retrieve()
     .body(String.class);
 ```
+
+3. What if the Service Discovery goes down ?
+* If the Service Discovery goes down, the microservices which are still working fine for some time using cached info(cached information means the information is stored locally) but new services cannot register themselves also the existing 
+services cannot discover each other. This can lead to failures in communication between services.
+Solution : 
+* We can keep the Eureka servers.
+
+4. If the order service is has the inventory service cachedd and what if the inventory service goes down and order service tries to call the inventory service what will happen ?
+* If the inventory service goes down and the order service tries to call it, the cached information wont work untit the instance is running again.
+* That's why we need to use the muitple instances of the services and load balancing.
